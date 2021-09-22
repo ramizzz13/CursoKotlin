@@ -1,7 +1,7 @@
 const val PI = 3.1416
 
 fun main(args: Array<String>) {
-/*    println("Hello World!")
+    println("Hello World!")
 
     // Try adding program arguments at Run/Debug configuration
     println("Program arguments: ${args.joinToString()}")
@@ -33,31 +33,7 @@ fun main(args: Array<String>) {
     val apellido = "Perez"
     val nombre2 = "Ramiz"
     val nombreCompleto = "Mi nombre es $nombre2 $apellido"
-    println(nombreCompleto)*/
+    println(nombreCompleto)
 
-    val nombre = "Maria"
 
-    /*if(nombre.isNotEmpty()){
-        println("El largo de nuestra variable nombre es ${nombre.length}")
-    }else {
-        println("Error, la variable esta vacia")
-    }*/
-
-    if(nombre.isNotEmpty()) println("El largo de nuestra variable nombre es ${nombre.length}") else println("Error, la variable esta vacia")
-
-/*    var mensaje : String
-    if (nombre.length > 4){
-        mensaje = "Tu nombre es largo!"
-    } else {
-        mensaje = "Tienes un nombre corto"
-    }*/
-
-    val mensaje : String = if (nombre.length > 4){
-        "Tu nombre es largo!"
-    } else if (nombre.isEmpty()){
-      "Nombre esta vacio"
-    } else {
-        "Tienes un nombre corto"
-    }
-    println(mensaje)
 }
