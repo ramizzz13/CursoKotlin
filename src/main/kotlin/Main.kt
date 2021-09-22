@@ -17,4 +17,20 @@ fun main(args: Array<String>) {
     println(nombre)
 
     println(PI)
+
+    val boolean = true
+    val numeroLargo = 3L
+    val double = 2.7182
+    val float = 1.1f
+
+    val primerValor = 20
+    val segundoValor = 10
+    val tecerValor = primerValor - segundoValor
+    println(tecerValor)
+
+    val apellido = "Perez"
+    val nombre2 = "Ramiz"
+    val nombreCompleto = "Mi nombre es $nombre2 $apellido"
+    println(nombreCompleto)
+
 }
