@@ -21,16 +21,73 @@ val respuestas = mapOf(
 
 fun main(args: Array<String>) {
     println("Hola soy tu bola 8 magica creada en Kotlin. Cual de estas opciones deseas realizar?")
+    desplegarMenuInicial()
+}
+
+fun desplegarMenuInicial(){
+    println()
     println("1. Realizar una pregunta")
     println("2. Revisar todas las respuestas")
     println("3. Salir")
 
     val valorIngresado = readLine()
 
-    when(valorIngresado){
+    when(valorIngresado) {
         "1" -> realizarPregunta()
         "2" -> mostrarRespuestas()
         "3" -> salir()
         else -> mostrarError()
     }
+}
+
+fun realizarPregunta(){
+    println("Que pregunta deseas realizar?")
+    readLine()
+    println("Asi que esa era tu pregunta... La respuesta a eso es: ")
+    val respuestaGenerada = respuestas.keys.random()
+    println(respuestaGenerada)
+    desplegarMenuInicial()
+}
+
+fun mostrarRespuestas(){
+    println("Selecciona una opcion:")
+    println("1. Revisar todas las respuestas")
+    println("2. Revisar solo las respuestas afirmativas")
+    println("3. Revisar solo las respuestas negativas")
+    println("4. Revisar solo las respuestas dudosas")
+
+    val opcionIngresada = readLine()
+    when(opcionIngresada){
+        "1" -> mostrarRespuestasPorTipo()
+        "2" -> mostrarRespuestasPorTipo(tipoRespuesta = RESPUESTA_AFIRMATIVA)
+        "3" -> mostrarRespuestasPorTipo(tipoRespuesta = RESPUESTA_NEGATIVA)
+        "4" -> mostrarRespuestasPorTipo(tipoRespuesta = RESPUESTA_DUDOSA)
+        else -> println("Respuesta no valida. Adios.")
+    }
+    desplegarMenuInicial()
+}
+
+fun mostrarRespuestasPorTipo(tipoRespuesta : String = "TODOS"){
+
+    val imprimirRespuestas : (Map<String, String>) -> Unit = { respuestas -> respuestas.keys.forEach { respuesta -> println(respuesta) }}
+    when(tipoRespuesta){
+        "TODOS" -> respuestas.keys.forEach { respuesta -> println(respuesta) }
+        RESPUESTA_AFIRMATIVA -> respuestas.filterValues { values -> values == RESPUESTA_AFIRMATIVA }
+            .also{imprimirRespuestas(it)}
+
+        RESPUESTA_NEGATIVA -> respuestas.filterValues { values -> values == RESPUESTA_NEGATIVA }
+            .also{imprimirRespuestas(it)}
+
+        RESPUESTA_DUDOSA -> respuestas.filterValues { values -> values == RESPUESTA_DUDOSA }
+            .also{imprimirRespuestas(it)}
+    }
+}
+
+fun salir(){
+    println("Hasta luego!")
+}
+
+fun mostrarError(){
+    println("Vaya, parace que has elegido una opcion no valida. Vuelve a intentar!")
+    desplegarMenuInicial()
 }
